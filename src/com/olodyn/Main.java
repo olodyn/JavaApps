@@ -1,6 +1,7 @@
 package com.olodyn;
 
 import java.nio.channels.FileLock;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static com.olodyn.MathEquation.getAverageResult;
@@ -41,9 +42,29 @@ public class Main {
         CrewMember bob = new CrewMember(FlightCrewJob.FLIGHT_ATTENDANT, "Bob");
          CrewMember agatha = new CrewMember(FlightCrewJob.COPILOT, "Agatha");
        // performOperation();
-        whoIsInCharge(agatha, bob);
+        // whoIsInCharge(agatha, bob);
+        //executeInteractively();
 
-        executeInteractively();
+        Passenger[] passengers = {
+                new Passenger("Luisa", 1,180),
+                new Passenger("Jack",1,90),
+                new Passenger("Ashanti", 3, 730),
+                new Passenger("Harish",2,150),
+        };
+
+        Arrays.sort(passengers); //utilizes comparable interface
+
+        //for(Passenger pass : passengers){ System.out.println( "Passenger name = " + pass.getName() + "  and the Passenger Member Level = "+ pass.getMemberLevel());}
+
+        Flight f175 = new Flight(175);
+        f175.add1Passenger(new Passenger("Santiago"));
+        f175.add1Passenger(new Passenger("Julie"));
+        f175.add1Passenger(new Passenger("John"));
+        f175.add1Passenger(new Passenger("Geetha"));
+            for(Passenger p : f175) {
+                System.out.println(p.getName());
+            }
+
     }
 
      static void whoIsInCharge(CrewMember member1, CrewMember member2) {

@@ -1,11 +1,15 @@
 package com.olodyn;
 
-public class Flight {
+import java.util.ArrayList;
+import java.util.Iterator;
+
+public class Flight implements Comparable<Flight>, Iterable<Passenger>{
     private int passengers, seats = 150, totalCheckedBags;
     private int flightNumber;
     private char flightClass;
     private boolean[] isSeatAvailable = new boolean[seats];
     private static int allPassengers, maxPassengersPerFlight;
+    private ArrayList<Passenger> passengerList = new ArrayList<>();
 
     {
         for (int i =0 ; i < seats; i++)
@@ -76,11 +80,19 @@ public class Flight {
     public void add1Passenger(Passenger p, int carryOns){
         add1Passenger(p.getCheckedBags(), carryOns);
     }
+
     public void addPassengers(Passenger... list){
         if(hasSeating(list.length)){
             passengers += list.length;
             for (Passenger passenger: list)
                 totalCheckedBags += passenger.getCheckedBags();
         }
+    }
+
+    public Iterator<Passenger> iterator(){ return  passengerList.iterator();}
+
+    public int compareTo(Flight f){
+        int returnValue = f.flightNumber - flightNumber;
+        return returnValue;
     }
 }
