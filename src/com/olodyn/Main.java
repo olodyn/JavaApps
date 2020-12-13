@@ -11,59 +11,8 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Divider divider = new Divider();
-        doCalculation(divider, 100.0d, 50.0d);
 
-        Adder adder = new Adder();
-        doCalculation(adder, 25.0d, 92.0d);
-
-        Subtracter subtracter = new Subtracter();
-        doCalculation(subtracter, 100.0d, 50.0d);
-
-        Multiplier multiplier = new Multiplier();
-        doCalculation(multiplier, 20.0d, 12.0d);
-
-        /* Flight f1 = new Flight(175);
-        Flight f2 = new Flight(175);
-        boolean result = f1.equals(f2);
-        System.out.println("Is f1 and f2 equal: "+ result);
-        
-        performMoreCalculations();
-
-        FlightCrewJob job1 = FlightCrewJob.PILOT;
-        FlightCrewJob job2 = FlightCrewJob.FLIGHT_ATTENDANT;
-
-        if(job2 == FlightCrewJob.PILOT)
-            System.out.println("job 1 is Pilot");
-        if(job1 != job2)
-            System.out.println("job1 and job 2 are different"); */
-
-        CrewMember geetha = new CrewMember(FlightCrewJob.PILOT, "Geetha");
-        CrewMember bob = new CrewMember(FlightCrewJob.FLIGHT_ATTENDANT, "Bob");
-         CrewMember agatha = new CrewMember(FlightCrewJob.COPILOT, "Agatha");
-       // performOperation();
-        // whoIsInCharge(agatha, bob);
-        //executeInteractively();
-
-        Passenger[] passengers = {
-                new Passenger("Luisa", 1,180),
-                new Passenger("Jack",1,90),
-                new Passenger("Ashanti", 3, 730),
-                new Passenger("Harish",2,150),
-        };
-
-        Arrays.sort(passengers); //utilizes comparable interface
-
-        //for(Passenger pass : passengers){ System.out.println( "Passenger name = " + pass.getName() + "  and the Passenger Member Level = "+ pass.getMemberLevel());}
-
-        Flight f175 = new Flight(175);
-        f175.add1Passenger(new Passenger("Santiago"));
-        f175.add1Passenger(new Passenger("Julie"));
-        f175.add1Passenger(new Passenger("John"));
-        f175.add1Passenger(new Passenger("Geetha"));
-            for(Passenger p : f175) {
-                System.out.println(p.getName());
-            }
+        dynamicInteractivity();
 
     }
 
@@ -150,6 +99,21 @@ public class Main {
         return calculation;
     }
 
+    private static void dynamicInteractivity(){
+        DynamicHelper helper = new DynamicHelper( new MathProcessing[] {
+                new Adder(),
+                new Multiplier(),
+                new Divider(),
+                new Subtracter(),
+                new PowerOf()
+        });
+
+        System.out.println("Enter an operation and two numbers:");
+        Scanner scanner = new Scanner(System.in);
+        String userInput = scanner.nextLine();
+
+        helper.process(userInput);
+    }
 
 
     static void executeInteractively(){

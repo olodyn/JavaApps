@@ -1,6 +1,6 @@
 package com.olodyn;
 
-public class Subtracter extends  CalculateBase {
+public class Subtracter extends  CalculateBase implements  MathProcessing{
 
     public Subtracter(){}
     public Subtracter(double leftVal, double rightVal){
@@ -13,4 +13,16 @@ public class Subtracter extends  CalculateBase {
         setResult(value);
     }
 
+    @Override
+    public String getKeyWord() {
+        return "subtract";
+    }
+
+    @Override
+    public double doCalculation(double leftVal, double rightVal) {
+        setLeftVal(leftVal);
+        setRightVal(rightVal);
+        calculate();
+        return getResult();
+    }
 }
